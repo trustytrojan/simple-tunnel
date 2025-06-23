@@ -44,7 +44,7 @@ controlSocket.on('data', (data) => {
 		return;
 	}
 
-	console.log(`Received request for new tunnel for alias '${alias}'.`);
+	console.log(`Received request for new tunnel for alias '${alias}' -> '${destination}'`);
 
 	const dataSocket = net.connect(AGENT_DATA_PORT, TUNNEL_SERVER_HOST, () => {
 		console.log('Connected to tunnel server data port.');
@@ -52,6 +52,7 @@ controlSocket.on('data', (data) => {
 		dataSocket.write(alias);
 
 		const [destHost, destPort] = destination.split(':');
+		console.debug(`destination='${destination}' destHost='${destHost}' destPort='${destPort}'`);
 		const destSocket = net.connect(parseInt(destPort, 10), destHost, () => {
 			console.log(`Connected to destination for alias '${alias}' at ${destination}.`);
 			dataSocket.pipe(destSocket);

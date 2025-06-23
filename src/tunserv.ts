@@ -63,7 +63,7 @@ const agentControlServer = net.createServer((socket) => {
 		agentDestinations = null;
 
 		// On agent disconnect, close the data server and any waiting clients.
-		agentDataServer.close();
+		// agentDataServer.close();
 		waitingClients.forEach((clients) => clients.forEach((client) => client.destroy()));
 		console.log('Cleaned up resources.');
 

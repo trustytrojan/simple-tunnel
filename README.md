@@ -2,7 +2,9 @@
 This project provides a simple TCP tunneling service that allows you to expose multiple backend services running on a private network (behind an "agent") to the public internet through a single tunnel server. This basically reverse engineers tunneling services like [Playit.gg](https://playit.gg), allowing you to host your own tunnel servers without IP/port restrictions.
 
 ## Limitations
-As of right now, the tunnel server can only handle one agent. If I ever need multiple agents, then I'll implement the functionality.
+- As of right now, the tunnel server can only handle one agent. If I ever need multiple agents, then I'll implement the functionality.
+- TCP only, TODO: implement UDP tunneling
+- Make a Dockerfile for the agent program (very low priority)
 
 ## How it Works
 The system consists of two main components:
